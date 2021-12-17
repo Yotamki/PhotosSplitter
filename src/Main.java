@@ -10,7 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Main
 {
-    static private String miscDirFormat = "Misc MM_yyyy";
+    static private final String dirDateFormat = "MM_yyyy";
+    static private final String miscDirPrefix = "Misc ";
 
     public static void main(String[] args)
     {
@@ -62,8 +63,8 @@ public class Main
         }
 
         // Compute target directory
-        SimpleDateFormat df = new SimpleDateFormat(miscDirFormat);
-        String subDirName = df.format(fileTime.toMillis());
+        SimpleDateFormat df = new SimpleDateFormat(dirDateFormat);
+        String subDirName = miscDirPrefix + df.format(fileTime.toMillis());
 
         // mkdir the relevant month directory if needed with the format of Misc MM_YYYY
         File targetDir = new File(baseDir + "\\" + subDirName);
